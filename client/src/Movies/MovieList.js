@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 export default function MovieList(props) {
   const { movieList } = props;
-  console.log(movieList)
+  // console.log(movieList)
   return (
     <div className="movie-list">
       {movieList.map(movie => (
-        <Link to={`/movielist/${movie.id}`}> 
+        <Link to={`/movie/${movie.id}`}> 
         <MovieDetails key={movie.id} movie={movie} /> 
         </Link>
       ))}
