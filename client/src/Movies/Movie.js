@@ -5,8 +5,8 @@ import { useParams } from 'react-router';
 export default function Movie(props) {
   const [movie, setMovie] = useState();
 
-  const movieId = useParams()
-  let id = movieId.id;
+  let { id } = useParams();
+  
   // Change ^^^ that line and use a hook to obtain the :id parameter from the URL
 
   useEffect(() => {
@@ -15,13 +15,15 @@ export default function Movie(props) {
       .then(response => {
         // Study this response with a breakpoint or log statements
         // and set the response data as the 'movie' slice of state
+        console.log(response.data)
+        setMovie(response.data)
       })
       .catch(error => {
-        console.error(error);
+        console.error('this is not working', error);
       });
     // This effect should run every time time
     // the `id` changes... How could we do this?
-  }, []);
+  }, [id]);
 
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = evt => { }
